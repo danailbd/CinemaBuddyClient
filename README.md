@@ -8,6 +8,7 @@ CinemaBuddy client written in angularjs.
 - bower install
 - npm install
 - Run `grunt` for building and `grunt serve` for preview.
+- open http://locahost:9000 to access the app
 
 Run `grunt build` to build the project
 
