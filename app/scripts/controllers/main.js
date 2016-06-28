@@ -7,11 +7,11 @@
  * # MainCtrl
  * Controller of the cinameBuddyApp
  */
-angular.module('cinameBuddyApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+angular.module('cinemaBuddyClientApp')
+       .controller('MainCtrl', function () {
+         this.awesomeThings = [
+           'HTML5 Boilerplate',
+           'AngularJS',
+           'Karma'
+         ];
+       });
