@@ -8,30 +8,43 @@
  * Factory in the cinemaBuddyClientApp.
  */
 angular.module('cinemaBuddyClientApp')
-  .factory('authService', function () {
-    var authService = {};
+       .factory('AuthService', function ($http, $rootScope, EVENTS) {
+         var authService   = {};
+         const SESSION_KEY = 'sessionId';
+         const ROLE        = 'role';
 
-    authService.login = function (credentials) {
-      return $http
-        .post('/login', credentials)
-        .then(function (res) {
-          Session.create(res.data.id, res.data.user.id,
-                         res.data.user.role);
-          return res.data.user;
-        });
-    };
+         authService.sessionKey = SESSION_KEY;
+         authService.role = ROLE;
 
-    authService.isAuthenticated = function () {
-      return !!Session.userId;
-    };
+         authService.login = function (credentials) {
+           return $http
+             .post('/login', credentials)
+             .then(function (res) {
+               var data = res.data;
+               window.localStorage.setItem(SESSION_KEY, data.sessionId);
+               window.localStorage.setItem(ROLE, data.role);
+               $rootScope.$emit(EVENTS.loginSuccess);
+             }, function (err) {
+               alert(JSON.stringify(err))
+             });
+         };
 
-    authService.isAuthorized = function (authorizedRoles) {
-      if (!angular.isArray(authorizedRoles)) {
-        authorizedRoles = [authorizedRoles];
-      }
-      return (authService.isAuthenticated() &&
-      authorizedRoles.indexOf(Session.userRole) !== -1);
-    };
+         authService.isAuthenticated = function () {
+           var session = window.localStorage.getItem(SESSION_KEY);
+           return !!session;
+         };
 
-    return authService; 
-  });
+         authService.isAuthorized = function (authorizedRoles) {
+           if (!angular.isArray(authorizedRoles)) {
+             authorizedRoles = [authorizedRoles];
+           }
+           return (authService.isAuthenticated() &&
+           authorizedRoles.indexOf(window.localStorage.getItem(ROLE)) !== -1);
+         };
+
+         authService.isAtRole = function (role) {
+           return window.localStorage.getItem(ROLE) === role;
+         };
+
+         return authService;
+       });

@@ -74,12 +74,12 @@ angular
       });
     })
   .run(
-    function ($rootScope, $window, $location, EVENTS, OAuth) {
+    function ($rootScope, $window, $location, EVENTS, OAuth, AuthService) {
       // Watch auth on path change ...
       $rootScope.$on('$routeChangeStart', function (event,
                                                     next,
                                                     current) {
-        if (!OAuth.isAuthenticated()) {
+        if (!AuthService.isAuthenticated()) {
           if (next.$$route.originalPath !== '/login') {
             event.preventDefault();
             /* You can save the user's location to take him back to the same page after he has logged-in */
