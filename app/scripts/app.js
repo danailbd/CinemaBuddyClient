@@ -74,7 +74,7 @@ angular
       });
     })
   .run(
-    function ($rootScope, $window, $location, OAuth) {
+    function ($rootScope, $window, $location, EVENTS, OAuth) {
       // Watch auth on path change ...
       $rootScope.$on('$routeChangeStart', function (event,
                                                     next,
@@ -88,6 +88,11 @@ angular
             $location.path('/login');
           }
         }
+      });
+
+      $rootScope.$on(EVENTS.loginSuccess, function () {
+        var location = $location.savedLocation || '/';
+        $location.path(location);
       });
 
       $rootScope.$on('oauth:error', function (event, rejection) {

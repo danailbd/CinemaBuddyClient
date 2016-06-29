@@ -8,8 +8,7 @@
  * Controller of the cinemaBuddyClientApp
  */
 angular.module('cinemaBuddyClientApp')
-       .controller('LoginCtrl', function ($scope, OAuth) {
-
+       .controller('LoginCtrl', function ($rootScope, $scope, EVENTS, OAuth) {
          $scope.username = null;
          $scope.password = null;
 
@@ -18,6 +17,8 @@ angular.module('cinemaBuddyClientApp')
                                   username: $scope.username,
                                   password: $scope.password
                                 })
-             .then();
+             .then(function () {
+                $rootScope.$emit(EVENTS.loginSuccess);
+             });
          }
        });
