@@ -23,16 +23,13 @@ angular.module('cinemaBuddyClientApp')
          };
 
          authService.login = function (credentials) {
-           return $http
-             .post('/login', credentials)
-             .then(function (res) {
-               var data = res.data;
-               window.localStorage.setItem(SESSION_KEY, data.sessionId);
-               window.localStorage.setItem(ROLE, data.role);
-               $rootScope.$emit(EVENTS.loginSuccess);
-             }, function (err) {
-               alert(JSON.stringify(err))
-             });
+           var data = {
+             sessionId: '1',
+             role: 'admin'
+           };
+           window.localStorage.setItem(SESSION_KEY, data.sessionId);
+           window.localStorage.setItem(ROLE, data.role);
+           $rootScope.$emit(EVENTS.loginSuccess);
          };
 
          authService.isAuthenticated = function () {

@@ -1,0 +1,24 @@
+<md-content layout="row" layout-padding>
+  Hello choose items to add:
+
+  <md-input-container>
+    <label>View</label>
+    <md-select ng-model="selected">
+      <md-option ng-repeat="state in menu"
+                 ng-click="clean()"
+                 value="{{state}}">
+        {{state}}
+      </md-option>
+    </md-select>
+  </md-input-container>
+
+  <!--Add forms-->
+
+  <div ng-if="isItemSelected('Theater')"
+       ng-include="'views/theater-edit.html'"></div>
+  <div ng-if="isItemSelected('Movie')"
+       ng-include="'views/movie-edit.html'"></div>
+  <div ng-if="isItemSelected('Projection')"
+       ng-include="'views/projection-edit.html'"></div>
+
+</md-content>

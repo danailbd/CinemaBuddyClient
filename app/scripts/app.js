@@ -38,7 +38,7 @@ angular
         controller  : 'LoginCtrl',
         controllerAs: 'login'
       })
-      .when('/projection', {
+      .when('/projections', {
         templateUrl : 'views/projection.html',
         controller  : 'ProjectionCtrl',
         controllerAs: 'projection'
@@ -47,6 +47,16 @@ angular
         templateUrl : 'views/booking.html',
         controller  : 'BookingCtrl',
         controllerAs: 'booking'
+      })
+      .when('/edit', {
+        templateUrl: 'views/edit.html',
+        controller: 'EditCtrl',
+        controllerAs: 'edit'
+      })
+      .when('/movies', {
+        templateUrl: 'views/movie.html',
+        controller: 'MovieCtrl',
+        controllerAs: 'movie'
       })
       .otherwise({
                    redirectTo: '/'

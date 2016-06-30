@@ -8,16 +8,16 @@
  * Factory in the cinemaBuddyClientApp.
  */
 angular.module('cinemaBuddyClientApp')
-  .factory('theaterService', function () {
-    // Service logic
-    // ...
-
-    var meaningOfLife = 42;
-
+  .factory('theaterService', function ($http, API_PATH) {
+    
+    function add (item) {
+      return $http.put(API_PATH + '/theater/add',
+                item);
+    }
+    
+    
     // Public API here
     return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
+      add: add
     };
   });

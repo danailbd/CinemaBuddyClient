@@ -1,0 +1,103 @@
+<form>
+  <md-input-container class="md-block">
+    <label>Capacity</label>
+    <input required type="number" name="clientName"
+           ng-model="project.capacity">
+    <div ng-messages="projectForm.clientName.$error">
+      <div ng-message="required">This is required.</div>
+    </div>
+  </md-input-container>
+  <md-input-container class="md-block">
+    <label>Type</label>
+    <input required type="email" name="clientEmail" ng-model="project.type">
+    <div ng-messages="projectForm.clientEmail.$error" role="alert">
+      <div
+        ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+        Your email must be between 10 and 100 characters long and look like
+        an e-mail address.
+      </div>
+    </div>
+  </md-input-container>
+  <md-input-container class="md-block">
+    <label>Number</label>
+    <input required type="number" step="any" name="rate"
+           ng-model="project.id"
+           max="20"/>
+    <div ng-messages="projectForm.rate.$error" multiple
+         md-auto-hide="false">
+      <!--TODO clean-->
+      <div ng-message="required">
+        You've got to charge something! You can't just <b>give away</b> a
+        Missile Defense
+        System.
+      </div>
+      <div ng-message="min">
+        You should charge at least $800 an hour. This job is a big deal...
+        if you mess up,
+        everyone dies!
+      </div>
+      <div ng-message="pattern">
+        You should charge exactly $1,234.
+      </div>
+      <div ng-message="max">
+        {{projectForm.rate.$viewValue | currency:"$":0}} an hour? That's a
+        little ridiculous. I
+        doubt even Bill Clinton could afford that.
+      </div>
+    </div>
+  </md-input-container>
+</form>
+<md-button class="md-raised md-warn">Save item</md-button>
+</div>
+<!--NEXT ...-->
+<div ng-if="isItemSelected('Movie')">
+  <form>
+    <md-input-container class="md-block">
+      <label>Capacity</label>
+      <input required type="number" name="clientName"
+             ng-model="project.capacity">
+      <div ng-messages="projectForm.clientName.$error">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
+    <md-input-container class="md-block">
+      <label>Type</label>
+      <input required type="email" name="clientEmail" ng-model="project.type">
+      <div ng-messages="projectForm.clientEmail.$error" role="alert">
+        <div
+          ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+          Your email must be between 10 and 100 characters long and look like
+          an e-mail address.
+        </div>
+      </div>
+    </md-input-container>
+    <md-input-container class="md-block">
+      <label>Number</label>
+      <input required type="number" step="any" name="rate"
+             ng-model="project.id"
+             max="20"/>
+      <div ng-messages="projectForm.rate.$error" multiple
+           md-auto-hide="false">
+        <!--TODO clean-->
+        <div ng-message="required">
+          You've got to charge something! You can't just <b>give away</b> a
+          Missile Defense
+          System.
+        </div>
+        <div ng-message="min">
+          You should charge at least $800 an hour. This job is a big deal...
+          if you mess up,
+          everyone dies!
+        </div>
+        <div ng-message="pattern">
+          You should charge exactly $1,234.
+        </div>
+        <div ng-message="max">
+          {{projectForm.rate.$viewValue | currency:"$":0}} an hour? That's a
+          little ridiculous. I
+          doubt even Bill Clinton could afford that.
+        </div>
+      </div>
+    </md-input-container>
+  </form>
+  <md-button class="md-raised md-warn">Save item</md-button>
