@@ -16,6 +16,12 @@ angular.module('cinemaBuddyClientApp')
          authService.sessionKey = SESSION_KEY;
          authService.role = ROLE;
 
+         authService.logout = function () {
+           window.localStorage.removeItem(SESSION_KEY);
+           window.localStorage.removeItem(ROLE);
+           $rootScope.$emit(EVENTS.logoutSuccess);
+         };
+
          authService.login = function (credentials) {
            return $http
              .post('/login', credentials)

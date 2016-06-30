@@ -19,6 +19,8 @@ angular.module('cinemaBuddyClientApp')
              $scope.isAdminUser = AuthService.isAtRole
                                              .bind(AuthService,
                                                    USER_ROLES.admin);
+             
+             $scope.logout = AuthService.logout;
            }
          };
        });

@@ -11,16 +11,24 @@
           <span class="icon-bar"></span>
         </button>
 
+
         <a class="navbar-brand" href="#/">CinemaBuddy</a>
       </div>
-
+      <div layout="row">
+        <md-button layory-align="end none" class="md-warn md-small " ng-click="logout()" flex>Sign Out
+        </md-button>
+      </div>
       <md-nav-bar ng-init="currentNavItem = 'page1'"
                   md-selected-nav-item="currentNavItem"
                   nav-bar-aria-label="navigation links">
-        <md-nav-item md-nav-href="#/" name="page1">Page One</md-nav-item>
-        <md-nav-item md-nav-href="#/about" name="page2">Page Two</md-nav-item>
-        <md-nav-item md-nav-href="#/projections" name="page3">Page Two</md-nav-item>
-        <md-nav-item ng-if="isAdminUser()" md-nav-href="#/edit" name="page4">Page Two</md-nav-item>
+        <md-nav-item md-nav-href="#/" name="page1">Home</md-nav-item>
+        <md-nav-item md-nav-href="#/about" name="page2">About</md-nav-item>
+        <md-nav-item md-nav-href="#/movies" name="page3">Movies</md-nav-item>
+        <md-nav-item md-nav-href="#/projections" name="page4">Program
+        </md-nav-item>
+        <md-nav-item ng-if="isAdminUser()" md-nav-href="#/edit" name="page5">
+          Edit
+        </md-nav-item>
       </md-nav-bar>
     </div>
   </div>

@@ -89,6 +89,10 @@ angular
           }
         }
       });
+      
+      $rootScope.$on(EVENTS.logoutSuccess, function () {
+        $location.path('/login');
+      });
 
       $rootScope.$on(EVENTS.loginSuccess, function () {
         var location = $location.savedLocation || '/';
